@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_purchase_order_document_inherit" inherit_id="purchase.report_purchaseorder_document">
+            <xpath expr="//table[1]" position="before">
+                <t t-set="display_discount" t-value="any([l.discount for l in o.order_line])"/>
+            </xpath>
+            <xpath expr="//table[1]//thead//tr//th[@name='th_price_unit']" position="after">
+                <th class="text-center" t-if="display_discount">
+                    <span>Discount %</span>
+                </th>
+                <th class="text-center" t-if="display_discount">
+                    <span>Subtotal Before Disc.</span>
+                </th>
+            </xpath>
+            <xpath expr="//table[1]//tbody//tr//td//span[@t-field='line.price_unit']" position="after">
+                <td class="text-center" t-if="display_discount">
+                    <span t-field="line.discount"/>
+                </td>
+                <td class="text-center" t-if="display_discount">
+                    <span t-field="line.sub_total_before_discount"/>
+                </td>
+            </xpath>
+            <xpath expr="//div[@id='total']//div//table//t[1]" position="before">
+                <tr t-if="display_discount">
+                    <td name="td_subtotal_label">Subtotal Before Disc.</td>
+                    <td class="text-right">
+                        <span t-field="o.total_before_discount"
+                              t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                    </td>
+                </tr>
+                <tr t-if="display_discount">
+                    <td name="td_subtotal_label">Discount</td>
+                    <td class="text-right">
+                        <span t-field="o.total_discount"
+                              t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                    </td>
+                </tr>
+            </xpath>
+        </template>
+    </data>
+</odoo>

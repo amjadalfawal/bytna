@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="purchase_order_form_view_inherit" model="ir.ui.view">
+            <field name="name">purchase.order.form.view.inherit</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_ref']" position="after">
+                    <field name="default_discount"/>
+                </xpath>
+                <field name="tax_totals_json" position="before">
+                    <field name="total_before_discount"/>
+                    <field name="total_discount"/>
+                </field>
+                <xpath expr="//field[@name='order_line']/tree/field[@name='taxes_id']" position="after">
+                    <field name="sub_total_before_discount" optional="show"/>
+                    <field name="discount" optional="show"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_category_property_form_inherit" model="ir.ui.view">
+            <field name="name">product.category.property.form.inherit</field>
+            <field name="model">product.category</field>
+            <field name="inherit_id" ref="account.view_category_property_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='property_account_income_categ_id']" position="before">
+                    <field name="discount_income_account_id" groups="account.group_account_user"/>
+                    <field name="discount_expense_account_id" groups="account.group_account_user"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

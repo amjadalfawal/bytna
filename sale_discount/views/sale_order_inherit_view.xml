@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_order_form_inherit" model="ir.ui.view">
+            <field name="name">view.order.form.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='order_line']/tree/field[@name='discount']" position="before">
+                    <field name="sub_total_before_discount"
+                           optional="show"/>
+                    <field name="discount_type"
+                           optional="show"/>
+                    <field name="discount_amount" 
+                           optional="show" attrs="{'readonly': [('discount_type', '!=', 'amount')]}" force_save="1"/>
+                </xpath>
+
+                <xpath expr="//field[@name='order_line']/tree/field[@name='discount']" position="attributes">
+                    <attribute name="force_save">1</attribute>
+                    <attribute name="attrs">{'readonly': [('discount_type', '!=', 'percentage')]}</attribute>
+                </xpath>
+
+                <xpath expr="//field[@name='tax_totals_json']" position="before">
+                    <field name="total_amount_before_discount" widget="monetary"
+                           options="{'currency_field': 'currency_id'}" groups="product.group_discount_per_so_line"/>
+                    <field name="total_discount_amount" widget="monetary" options="{'currency_field': 'currency_id'}"
+                           groups="product.group_discount_per_so_line"/>
+
+                </xpath>
+
+
+
+            </field>
+        </record>
+
+
+
+    </data>
+</odoo>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_invoice_document" inherit_id="account.report_invoice_document">
+            <xpath expr="//div[@id='total']//div//table//tr[1]" position="before">
+                <tr t-if="display_discount">
+                    <td name="td_subtotal_label">Subtotal Before Disc.</td>
+                    <td class="text-right">
+                        <span t-field="o.total_before_discount"
+                            t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                    </td>
+                </tr>
+                <tr t-if="display_discount">
+                    <td name="td_subtotal_label">Discount</td>
+                    <td class="text-right">
+                        <span t-field="o.total_discount"
+                            t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                    </td>
+                </tr>
+            </xpath>
+        </template>
+    </data>
+</odoo>
