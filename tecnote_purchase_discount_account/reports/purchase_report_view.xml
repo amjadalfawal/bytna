@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="purchase_report_view_search" model="ir.ui.view">
+        <field name="name">purchase.report.search</field>
+        <field name="model">purchase.report</field>
+        <field name="inherit_id" ref="purchase.view_purchase_order_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='company']" position="after">
+                    <filter string="Analytic Tag" name="analytic_tag_id" context="{'group_by':'analytic_tag_id'}"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

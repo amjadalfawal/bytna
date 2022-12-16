@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_purchaseorder_document"
+                  inherit_id="purchase.report_purchaseorder_document">
+
+            <xpath expr="//t[@t-set='address']" position="replace">
+                <t t-set="address">
+                    <div t-field="o.partner_id"   t-esc="o.partner_id.unique_id"
+                    t-options='{"widget": "contact", "fields": ["address", "name", "phone"], "no_marker": True, "phone_icons": True}'/>
+                    <p t-if="o.partner_id.vat"><t t-esc="o.company_id.account_fiscal_country_id.vat_label or 'Tax ID'"/>: <span t-field="o.partner_id.vat"/></p>
+               </t>
+
+            </xpath>
+             <xpath expr="//table[@class='table table-sm o_main_table']" position="replace">
+                 <table class="table table-sm o_main_table">
+                <thead>
+                    <tr>
+                        <th name="th_description"><strong>Description</strong></th>
+                        <th name="th_taxes"><strong>Vendor Product Code</strong></th>
+                        <th name="th_quantity" class="text-right"><strong>Qty</strong></th>
+                        <th name="th_quantity" class="text-right"><strong>Barcode</strong></th>
+                        <th name="th_price_unit" class="text-right"><strong>Unit Price</strong></th>
+                        <th name="th_amount" class="text-right"><strong>Amount</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-set="current_subtotal" t-value="0"/>
+                    <t t-foreach="o.order_line" t-as="line">
+                        <t t-set="current_subtotal" t-value="current_subtotal + line.price_subtotal" groups="account.group_show_line_subtotals_tax_excluded"/>
+                        <t t-set="current_subtotal" t-value="current_subtotal + line.price_total" groups="account.group_show_line_subtotals_tax_included"/>
+
+                        <tr t-att-class="'bg-200 font-weight-bold o_line_section' if line.display_type == 'line_section' else 'font-italic o_line_note' if line.display_type == 'line_note' else ''">
+                            <t t-if="not line.display_type">
+                                <td id="product">
+                                    <span t-field="line.name"/>
+                                </td>
+
+                               <td id="product_code">
+                                   <span t-esc="', '.join(code.product_code for code in line.product_id.seller_ids if code.product_code and code.name.id == line.partner_id.id)"/>
+                                </td>
+                                <td class="text-right">
+                                    <span t-field="line.product_qty"/>
+                                    <span t-field="line.product_uom.name" groups="uom.group_uom"/>
+                                </td>
+                                <td class="text-right">
+                                    <span t-field="line.barcode"/>
+                                    <span t-field="line.product_uom.name" groups="uom.group_uom"/>
+                                </td>
+                                <td class="text-right">
+                                    <span t-field="line.price_unit"/>
+                                </td>
+                                <td class="text-right">
+                                    <span t-field="line.price_subtotal"
+                                        t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                </td>
+                            </t>
+                            <t t-if="line.display_type == 'line_section'">
+                                <td colspan="99" id="section">
+                                    <span t-field="line.name"/>
+                                </td>
+                                <t t-set="current_section" t-value="line"/>
+                                <t t-set="current_subtotal" t-value="0"/>
+                            </t>
+                            <t t-if="line.display_type == 'line_note'">
+                                <td colspan="99" id="note">
+                                    <span t-field="line.name"/>
+                                </td>
+                            </t>
+                        </tr>
+                        <t t-if="current_section and (line_last or o.order_line[line_index+1].display_type == 'line_section')">
+                            <tr class="is-subtotal text-right">
+                                <td colspan="99" id="subtotal">
+                                    <strong class="mr16">Subtotal</strong>
+                                    <span
+                                        t-esc="current_subtotal"
+                                        t-options='{"widget": "monetary", "display_currency": o.currency_id}'
+                                    />
+                                </td>
+                            </tr>
+                        </t>
+                    </t>
+                </tbody>
+            </table>
+
+
+
+            </xpath>
+
+
+
+        </template>
+
+
+    </data>
+</odoo>

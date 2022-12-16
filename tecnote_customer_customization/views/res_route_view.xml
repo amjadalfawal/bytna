@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="res_route_form_view" model="ir.ui.view">
+            <field name="name">Routes</field>
+            <field name="model">res.route</field>
+            <field name="arch" type="xml">
+                <form string="Routes" >
+                    <sheet >
+                        <group>
+                            <field name="name" />
+                            <field name="code" />
+                            <field name="desceription" />
+
+
+                        </group>
+
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+
+
+        <record id="res_routetree_view" model="ir.ui.view">
+            <field name="name">res.route.tree.view</field>
+            <field name="model">res.route</field>
+            <field name="arch" type="xml">
+                <tree string="Customer Routes">
+                    <field name="name" />
+                    <field name="code" />
+                    <field name="desceription" />
+
+                </tree>
+            </field>
+        </record>
+
+
+        <record model="ir.actions.act_window" id="res_route_action_view">
+            <field name="name">Res Route</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.route</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>
