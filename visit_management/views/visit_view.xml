@@ -1,0 +1,101 @@
+<odoo>
+  <data>
+    <record id="visits_tree" model="ir.ui.view">
+      <field name="name">Visits.tree</field>
+      <field name="model">visits.visit</field>
+      <field name="arch" type="xml">
+        <tree
+          string="Visits"
+          decoration-success="state=='done'"
+          decoration-info="state=='confirmed'">
+          <field name="name" />
+          <field name="visiting_date" />
+          <field name="visiting_day" />
+          <field name="visit_schedule_id" />
+          <field name="partner_id" />
+          <field name="salesperson_id" />
+          <field name="state" />
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="visits_form">
+      <field name="name">Visits.form</field>
+      <field name="model">visits.visit</field>
+      <field name="arch" type="xml">
+        <form string="Visits">
+          <header>
+            <button name="action_confirmed" states="draft" type="object" string="Confirm" />
+            <button name="action_canceled" states="confirmed" type="object" string="Canceled" />
+            <button name="action_done" states="confirmed" type="object" string="Done" />
+            <field
+              name="state"
+              widget="statusbar"
+              statusbar_visible="draft,confirmed,done"
+            />
+          </header>
+          <sheet>
+            <div class="oe_button_box" name="button_box">
+              <button
+                name="action_view_orders"
+                type="object"
+                class="oe_stat_button"
+                icon="fa-pencil-square-o">
+                <field name="orders_ids" widget="statinfo" string="Orders" />
+              </button>
+            </div>
+
+            <group>
+              <group>
+                <field name="name" />
+                <field name="visiting_date" />
+                <field name="visiting_day" />
+                <field name="partner_id" />
+                <field name="salesperson_id" />
+                <field name="visit_schedule_id" />
+              </group>
+              <group string="Visit Result">
+                <field name="visit_status" />
+
+                <field
+                  name="start_date"
+                  widget="daterange"
+                  options="{'related_end_date': 'end_date'}"
+                />
+                <!-- <field
+                  name="end_date"
+                  widget="daterange"
+                  options="{'related_start_date': 'start_date'}"
+                /> -->
+                <!-- <field name="rate_visit" widget="percentpie" /> -->
+                <!-- <field name="visit_notes" /> -->
+              </group>
+            </group>
+          </sheet>
+          <div class="oe_chatter">
+            <field name="message_follower_ids" widget="mail_followers" />
+            <field name="message_ids" widget="mail_thread" />
+          </div>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_visits">
+      <field name="name">Visits</field>
+      <field name="res_model">visits.visit</field>
+      <field name="view_mode">tree,form</field>
+      <field name="view_id" ref="visits_tree" />
+    </record>
+
+    <menuitem id="menu_visit_schedule_base" name="Visits Mangment" sequence="11" />
+
+    <menuitem
+      name="Visits"
+      id="visits_visit_menu"
+      parent="menu_visit_schedule_base"
+      action="action_visits"
+      groups="base.group_user"
+      sequence="15"
+    />
+  </data>
+</odoo>

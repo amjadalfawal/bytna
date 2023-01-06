@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record id="view_users_form_inherit_api" model="ir.ui.view">
+        <field name="name">res.users.form.inherit</field>
+        <field name="model">res.users</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+            <field name="odoobot_state" position="after">
+                <field name="token"/>
+                <field name="mobile_password" password="True"/>
+                <field name="fb_token"/>
+                <field name="fb_uid"/>
+                <field name="imei"/>
+                <field name="journal_id"/>
+
+            </field>
+
+        </field>
+    </record>
+</odoo>
+ 
