@@ -1,0 +1,14 @@
+<odoo>
+  <data>
+    <record id="view_order_form_added_visit" model="ir.ui.view">
+      <field name="name">visit sale order</field>
+      <field name="model">sale.order</field>
+      <field name="inherit_id" ref="sale.view_order_form" />
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='date_order']" position="after">
+          <field name="visit_id" visible="1" />
+        </xpath>
+      </field>
+    </record>
+  </data>
+</odoo>

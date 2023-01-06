@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_res_days,res.days,model_res_days,base.group_user,1,0,0,0
+access_visits_planning_own,visits.planning,model_visits_planning,base.group_user,1,0,0,0
+access_visits_planning_group_sale_salesman_all_leads,visits.planning all leads,model_visits_planning,sales_team.group_sale_salesman_all_leads,1,1,1,0
+access_visits_visit,visits.visit,model_visits_visit,base.group_user,1,1,1,0

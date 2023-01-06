@@ -1,0 +1,43 @@
+# -*- coding: utf-8 -*-
+"""
+    This model is used to create a product brand fields
+"""
+from odoo import api, fields, models, _
+from odoo.exceptions import UserError, ValidationError
+
+
+class ProductBrandEpt(models.Model):
+    _name = 'product.brand.ept'
+    _order = 'name'
+    _description = 'Product Brand'
+
+    name = fields.Char('Brand Name', required=True, translate=True)
+    description = fields.Text('Description', translate=True)
+    logo = fields.Binary('Logo File')
+    product_ids = fields.One2many('product.template', 'product_brand_ept_id', string="Products", readonly=True)
+    products_count = fields.Integer(
+        string='Number of products',
+        compute='_compute_products_count',
+        help='It shows the number of product counts',
+    )
+    sequence = fields.Integer(help="Gives the sequence order when displaying a list of product Brands.", index=True,
+                              default=10)
+    is_featured_brand = fields.Boolean(string='Is Featured Brand')
+
+
+
+    @api.depends('product_ids')
+    def _compute_products_count(self):
+        for brand in self:
+            brand.products_count = len(brand.product_ids)
+
+    def set_brand_wizard(self):
+        action = {
+            'type': 'ir.actions.act_window',
+            'res_model': 'product.brand.config',
+            'name': "Product Brand Configuration",
+            'view_mode': 'form',
+            'target': 'new',
+            'context': dict(default_brand_id=self.id),
+        }
+        return action

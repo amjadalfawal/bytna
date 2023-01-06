@@ -1,0 +1,117 @@
+<odoo>
+  <data>
+
+
+    <record id="visits_schedule_tree" model="ir.ui.view">
+      <field name="name">visits.schedule</field>
+      <field name="model">visits.planning</field>
+      <field name="arch" type="xml">
+        <tree
+          string="Visit Schedule"
+          decoration-success="state=='confirmed'"
+          decoration-danger="state=='canceled'"
+          decoration-info="state=='draft'">
+          <field name="name" />
+          <field name="schedule_by" />
+          <field name="start_date" />
+          <field name="end_date" />
+          <field name="state" />
+        </tree>
+      </field>
+    </record>
+
+
+    <record model="ir.ui.view" id="visits_schedule_form">
+      <field name="name">visits.schedule.form</field>
+      <field name="model">visits.planning</field>
+      <field name="arch" type="xml">
+        <form string="Visits Schedule">
+          <header>
+            <button
+              name="actionGenerate"
+              states="confirmed"
+              type="object"
+              string="Generate Schedule Visits"
+            />
+            <button name="action_confirmed" states="draft" type="object" string="Confirm" />
+            <button
+              name="action_canceled"
+              states="confirmed,generated,draft"
+              type="object"
+              string="Cancel"
+            />
+            <field
+              name="state"
+              widget="statusbar"
+              statusbar_visible="draft,confirmed,populated,canceled"
+            />
+          </header>
+          <sheet>
+            <div class="oe_button_box" name="button_box">
+              <button
+                name="action_view_visits"
+                type="object"
+                class="oe_stat_button"
+                icon="fa-pencil-square-o">
+                <field name="visits_ids" widget="statinfo" string="Visits" />
+              </button>
+            </div>
+
+            <group>
+              <group>
+                <field name="name" />
+                <field name="schedule_by" required="1"  />
+                <field
+                  name="salesperson_id"
+                  attrs="{'invisible': [('schedule_by', '!=', 'sales_person')],'required': [('schedule_by', '=', 'sales_person')]}"
+                />
+              </group>
+              <group string="Period">
+                <field
+                  name="start_date"
+                  widget="daterange"
+                  options="{'related_end_date': 'end_date'}"
+                />
+                <field
+                  name="end_date"
+                  widget="daterange"
+                  options="{'related_start_date': 'start_date'}"
+                />
+              </group>
+            </group>
+          </sheet>
+          <!-- Start Tracker  -->
+          <div class="oe_chatter">
+            <field name="message_follower_ids" widget="mail_followers" />
+            <field name="message_ids" widget="mail_thread" />
+          </div>
+          <!-- End Tracker  -->
+        </form>
+      </field>
+    </record>
+
+
+    <record model="ir.actions.act_window" id="action_visits_schedule">
+      <field name="name">Visits schedule</field>
+      <field name="res_model">visits.planning</field>
+      <field name="view_mode">tree,form</field>
+      <field name="view_id" ref="visits_schedule_tree" />
+    </record>
+    <menuitem
+      id="vansales_visits_visit_menu"
+      groups="sales_team.group_sale_manager"
+      name="Visits"
+      parent="visit_management.menu_visit_schedule_base"
+      sequence="2"
+    />
+
+    <menuitem
+      id="visits_schedule"
+      groups="sales_team.group_sale_manager"
+      action="action_visits_schedule"
+      name="schedule Visits"
+      parent="visit_management.menu_visit_schedule_base"
+      sequence="1"
+    />
+  </data>
+</odoo>

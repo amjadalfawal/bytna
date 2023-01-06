@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.hr.attendance</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="80" />
+        <field name="inherit_id" ref="base.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+
+            <xpath expr="//div[@data-key='hr_attendance']" position="inside">
+                <h2>Hr App Setting</h2>
+                <div class="row mt16 o_settings_container" name="pincode_setting_container">
+                    <!-- <div class="col-12 col-lg-6 o_setting_box" title="Similarity Distance">
+                        <span class="o_form_label">Face similarity Portal distance</span>
+                        <field name="similarity_distance" />
+                    </div> -->
+<!-- 
+                    <div class="col-12 col-lg-6 o_setting_box" title="Similarity Distance">
+                        <span class="o_form_label">Face similarity Kiosk distance</span>
+                        <field name="similarity_distance_kiosk" />
+                    </div> -->
+                    <!-- <div class="col-12 col-lg-6 o_setting_box" title="Face Auto Kiosk Mode">
+                        <div class="o_setting_left_pane">
+                            <field name="attendance_auto_mode" />
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <span class="o_form_label">Face Auto Kiosk Mode</span>
+                            <div class="text-muted">
+                                    Use Auto Face Auto Kiosk Mode
+                                </div>
+                        </div>
+                    </div> -->
+
+                    <!-- <div class="col-12 col-lg-6 o_setting_box" title="Face Geo Capture Mode">
+                        <div class="o_setting_left_pane">
+                            <field name="attendance_geo_capture" />
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <span class="o_form_label">Face Geo Capture Mode</span>
+                            <div class="text-muted">
+                                 Face Geo Capture Mode
+                            </div>
+                        </div>
+                    </div> -->
+
+                    <div class="col-12 col-lg-6 o_setting_box" title="Force Geo Location">
+                        <div class="o_setting_left_pane">
+                            <field name="attendance_force_geo" />
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <span class="o_form_label">Force Geo Location</span>
+                            <div class="text-muted">
+                                Force Geo Location
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-12 col-lg-6 o_setting_box" title="Zone Rule">
+                        <div class="o_setting_left_pane">
+                            <field name="attendance_zone_rule" />
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <span class="o_form_label">Active Zone Rule</span>
+                            <div class="text-muted">
+                                Zone Rule
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+
+</odoo>

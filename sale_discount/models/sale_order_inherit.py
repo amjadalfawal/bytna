@@ -42,6 +42,24 @@ class SaleOrder(models.Model):
     total_discount_amount = fields.Monetary(string='Discount', tracking=True,compute='_compute_total_discount_amount')
     total_amount_before_discount = fields.Monetary(string='Amount Before Discount', tracking=True,compute='_compute_total_amount_before_discount')
 
+    delivery_status = fields.Selection(selection=[
+        ('not_delivered', 'Not Delivered'),
+        ('in_progress', 'In Progress'),
+        ('done', 'Done'),
+    ], string='Delivery Status', default='not_delivered')
+
+
+    @api.depends('picking_ids')
+    def _compute_delivery_status(self):
+        for order in self:
+            if all(picking.state == 'done' for picking in order.picking_ids):
+                order.delivery_status = 'done'
+            elif any(picking.state == 'done' for picking in order.picking_ids):
+                order.delivery_status = 'in_progress'
+            else:
+                order.delivery_status = 'not_delivered'
+
+
     @api.depends('order_line.product_uom_qty', 'order_line.price_unit', 'order_line.discount')
     def _compute_total_discount_amount(self):
         for order in self:

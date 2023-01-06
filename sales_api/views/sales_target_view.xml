@@ -1,0 +1,73 @@
+<odoo>
+    <data>
+      <record model="ir.ui.view" id="sales_target_form_view">
+        <field name="name">Sales Target Form</field>
+        <field name="model">sales.target</field>
+        <field name="arch" type="xml">
+          <form string="Sales Target">
+            <sheet>
+            <group>
+                <field name="name" required="True"/>
+                <field name="user_id" required="True"/>
+                <field name="start_date" required="True"/>
+                <field name="end_date" required="True"/>
+                <field name="target_type"/>
+                <field name="category_id"  attrs="{'invisible': [('target_type', '!=', 'category')]}"/>
+                <field name="partner_id"  attrs="{'invisible': [('target_type', '!=', 'customer')]}"/>
+                <field name="target_quantity" required="True"/>
+                <!-- <field name="uom_id" required="True"/> -->
+                <field name="calculation_type"/>
+                <field name="achieved_quantity" readonly="True"/>
+                </group>
+            </sheet>
+            <div class="oe_chatter">
+                <field name="message_follower_ids" widget="mail_followers" />
+                <field name="message_ids" widget="mail_thread" />
+            </div>
+          </form>
+        </field>
+      </record>
+  
+      <record model="ir.ui.view" id="sales_target_tree_view">
+        <field name="name">Sales Target List</field>
+        <field name="model">sales.target</field>
+        <field name="arch" type="xml">
+          <tree string="Sales Target">
+            <field name="name"/>
+            <field name="user_id"/>
+            <field name="start_date"/>
+            <field name="end_date"/>
+            <field name="target_type"/>
+            <field name="category_id"  attrs="{'invisible': [('target_type', '!=', 'category')]}"/>
+            <field name="partner_id"  attrs="{'invisible': [('target_type', '!=', 'customer')]}"/>
+            <field name="target_quantity"/>
+            <!-- <field name="uom_id"/> -->
+            <field name="calculation_type"/>
+            <field name="achieved_quantity"/>
+          </tree>
+        </field>
+      </record>
+
+      <record model="ir.actions.act_window" id="sales_target_action">
+        <field name="name">Sales Target</field>
+        <field name="res_model">sales.target</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+          <p>This is the sales target module. It allows you to set and track sales targets for your sales team.</p>
+        </field>
+      </record>
+      
+      <menuitem id="sales_target_menu" parent="sale.sale_menu_root" name="Sales Target" action="sales_target_action"/>
+      
+      <record id="sales_target_group" model="res.groups">
+        <field name="name">Sales Target Manager</field>
+        <field name="implied_ids" eval="[(4, ref('sales_team.group_sale_salesman'))]"/>
+      </record>
+      
+      <record id="sales_target_rule" model="ir.rule">
+        <field name="name">Sales Target Manager</field>
+        <field name="model_id" ref="model_sales_target"/>
+        <field name="groups" eval="[(4, ref('sales_api.sales_target_group'))]"/>
+      </record>
+    </data>
+    </odoo>
