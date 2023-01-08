@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+
+        <record id="gen_sale_wizard_view" model="ir.ui.view">
+            <field name="name">Import Images From Zip File </field>
+            <field name="model">gen.sale</field>
+            <field name="arch" type="xml">
+                <form string="Import Sale Order">
+                    <group>
+                            <field name="img_for" widget="radio" />
+                            <field name="product_by" widget="radio" attrs="{'invisible' : [('img_for','!=','product')]}"/>
+                            <field name="product_model" widget="radio" attrs="{'invisible' : [('img_for','!=','product')]}"/>
+                            <field name="partner_by" widget="radio" attrs="{'invisible' : [('img_for','!=','partner')]}"/>
+                            <field name="emp_by" widget="radio" attrs="{'invisible' : [('img_for','!=','employee')]}"/>
+
+                            <field name="file" filename="name" />
+
+                    </group>
+
+                    <footer>
+                        <button name="import_img" string="Import" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_highlight" special="cancel" />
+                        <div class="pull-right">
+                            <label for="download_auto" string="Download Sample: "/>
+                            <button name="download_auto" string="Zip File" type="object" class="oe_highlight" icon='fa-download'/>
+                        </div>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        
+        <record id="custom_pop_message_wizard_view_form" model="ir.ui.view">
+            <field name="name">custom.pop.message.form</field>
+            <field name="model">custom.pop.message</field>
+            <field name="arch" type="xml">
+                <form string="Custom POP Message">
+
+                    <field name="name" readonly="1"/>  
+                    <footer>
+                       <button string="Ok" class="oe_highlight" special="cancel"/>
+                    </footer>
+               </form>
+            </field>
+        </record>
+
+        <record id="gen_sale_import_wizard" model="ir.actions.act_window">
+            <field name="name">Import Images From Zip File</field>
+            <field name="res_model">gen.sale</field>
+            <field name="binding_view_types">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem action="gen_sale_import_wizard"
+                  id="gen_sale_wizard_import"
+                  parent="sale.product_menu_catalog"
+                  groups = "bi_import_img_from_zip.group_support_user"
+                   />
+                 
+    </data>
+</openerp>
+ 
