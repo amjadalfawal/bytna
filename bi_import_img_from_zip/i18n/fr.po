@@ -1,0 +1,203 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* bi_import_img_from_zip
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-05-28 13:32+0000\n"
+"PO-Revision-Date: 2021-05-28 13:32+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: bi_import_img_from_zip
+#: model:ir.model.fields.selection,name:bi_import_img_from_zip.selection__gen_sale__product_by__barcode
+msgid "Barcode"
+msgstr "code à barre"
+
+#. module: bi_import_img_from_zip
+#: model_terms:ir.ui.view,arch_db:bi_import_img_from_zip.gen_sale_wizard_view
+msgid "Cancel"
+msgstr "Annuler"
+
+#. module: bi_import_img_from_zip
+#: model:ir.model.fields,field_description:bi_import_img_from_zip.field_custom_pop_message__create_uid
+#: model:ir.model.fields,field_description:bi_import_img_from_zip.field_gen_sale__create_uid
+msgid "Created by"
+msgstr "Créé par"
+
+#. module: bi_import_img_from_zip
+#: model:ir.model.fields,field_description:bi_import_img_from_zip.field_custom_pop_message__create_date
+#: model:ir.model.fields,field_description:bi_import_img_from_zip.field_gen_sale__create_date
+msgid "Created on"
+msgstr "Créé sur"
+
+#. module: bi_import_img_from_zip
+#: model_terms:ir.ui.view,arch_db:bi_import_img_from_zip.custom_pop_message_wizard_view_form
+msgid "Custom POP Message"
+msgstr "Message POP personnalisé"
+
+#. module: bi_import_img_from_zip
+#: model:ir.model.fields,field_description:bi_import_img_from_zip.field_custom_pop_message__display_name
+#: model:ir.model.fields,field_description:bi_import_img_from_zip.field_gen_sale__display_name
+msgid "Display Name"
+msgstr "Afficher un nom"
+
+#. module: bi_import_img_from_zip
+#: model_terms:ir.ui.view,arch_db:bi_import_img_from_zip.gen_sale_wizard_view
+msgid "Download Sample:"
+msgstr "Télécharger un échantillon:"
+
+#. module: bi_import_img_from_zip
+#: model:ir.model.fields.selection,name:bi_import_img_from_zip.selection__gen_sale__img_for__employee
+msgid "Employee"
+msgstr "Employée"
+
+#. module: bi_import_img_from_zip
+#: model:ir.model.fields,field_description:bi_import_img_from_zip.field_gen_sale__emp_by
+msgid "Employee By"
+msgstr "Employé par"
+
+#. module: bi_import_img_from_zip
+#: model:ir.model.fields,field_description:bi_import_img_from_zip.field_custom_pop_message__id
+#: model:ir.model.fields,field_description:bi_import_img_from_zip.field_gen_sale__id
+#: model:ir.model.fields.selection,name:bi_import_img_from_zip.selection__gen_sale__emp_by__id
+#: model:ir.model.fields.selection,name:bi_import_img_from_zip.selection__gen_sale__partner_by__id
+#: model:ir.model.fields.selection,name:bi_import_img_from_zip.selection__gen_sale__product_by__id
+msgid "ID"
+msgstr "identifiant"
+
+#. module: bi_import_img_from_zip
+#: model:ir.model.fields.selection,name:bi_import_img_from_zip.selection__gen_sale__emp_by__id_no
+msgid "Identification No"
+msgstr "Numéro d'identification"
+
+#. module: bi_import_img_from_zip
+#: model:ir.model.fields,field_description:bi_import_img_from_zip.field_gen_sale__img_for
+msgid "Images For"
+msgstr "Images pour"
+
+#. module: bi_import_img_from_zip
+#: model_terms:ir.ui.view,arch_db:bi_import_img_from_zip.gen_sale_wizard_view
+msgid "Import"
+msgstr "Importer"
+
+#. module: bi_import_img_from_zip
+#: model:ir.actions.act_window,name:bi_import_img_from_zip.gen_sale_import_wizard
+#: model:ir.ui.menu,name:bi_import_img_from_zip.gen_sale_wizard_import
+#: model:res.groups,name:bi_import_img_from_zip.group_support_user
+msgid "Import Images From Zip File"
+msgstr "Importer des images à partir d'un fichier Zip"
+
+#. module: bi_import_img_from_zip
+#: model_terms:ir.ui.view,arch_db:bi_import_img_from_zip.gen_sale_wizard_view
+msgid "Import Sale Order"
+msgstr "Commande de vente d'importation"
+
+#. module: bi_import_img_from_zip
+#: model:ir.model.fields.selection,name:bi_import_img_from_zip.selection__gen_sale__partner_by__internal_ref
+#: model:ir.model.fields.selection,name:bi_import_img_from_zip.selection__gen_sale__product_by__internal_ref
+msgid "Internal Reference"
+msgstr "Référence interne"
+
+#. module: bi_import_img_from_zip
+#: model:ir.model.fields,field_description:bi_import_img_from_zip.field_custom_pop_message____last_update
+#: model:ir.model.fields,field_description:bi_import_img_from_zip.field_gen_sale____last_update
+msgid "Last Modified on"
+msgstr "Dernière modification le"
+
+#. module: bi_import_img_from_zip
+#: model:ir.model.fields,field_description:bi_import_img_from_zip.field_custom_pop_message__write_uid
+#: model:ir.model.fields,field_description:bi_import_img_from_zip.field_gen_sale__write_uid
+msgid "Last Updated by"
+msgstr "Dernière mise à jour par"
+
+#. module: bi_import_img_from_zip
+#: model:ir.model.fields,field_description:bi_import_img_from_zip.field_custom_pop_message__write_date
+#: model:ir.model.fields,field_description:bi_import_img_from_zip.field_gen_sale__write_date
+msgid "Last Updated on"
+msgstr "Dernière mise à jour le"
+
+#. module: bi_import_img_from_zip
+#: model:ir.model.fields,field_description:bi_import_img_from_zip.field_custom_pop_message__name
+msgid "Message"
+msgstr "Un message"
+
+#. module: bi_import_img_from_zip
+#: model:ir.model.fields.selection,name:bi_import_img_from_zip.selection__gen_sale__emp_by__name
+#: model:ir.model.fields.selection,name:bi_import_img_from_zip.selection__gen_sale__partner_by__name
+#: model:ir.model.fields.selection,name:bi_import_img_from_zip.selection__gen_sale__product_by__name
+msgid "Name"
+msgstr "Nom"
+
+#. module: bi_import_img_from_zip
+#: model_terms:ir.ui.view,arch_db:bi_import_img_from_zip.custom_pop_message_wizard_view_form
+msgid "Ok"
+msgstr "D'accord"
+
+#. module: bi_import_img_from_zip
+#: model:ir.model.fields.selection,name:bi_import_img_from_zip.selection__gen_sale__img_for__partner
+msgid "Partner"
+msgstr "Partenaire"
+
+#. module: bi_import_img_from_zip
+#: model:ir.model.fields,field_description:bi_import_img_from_zip.field_gen_sale__partner_by
+msgid "Partner By"
+msgstr "Partenaire par"
+
+#. module: bi_import_img_from_zip
+#: code:addons/bi_import_img_from_zip/wizard/sale.py:0
+#, python-format
+msgid "Please select an Zip file or You have selected invalid file"
+msgstr "Veuillez sélectionner un fichier Zip ou Vous avez sélectionné un fichier invalide"
+
+#. module: bi_import_img_from_zip
+#: model:ir.model.fields.selection,name:bi_import_img_from_zip.selection__gen_sale__img_for__product
+msgid "Product"
+msgstr "Produit"
+
+#. module: bi_import_img_from_zip
+#: model:ir.model.fields,field_description:bi_import_img_from_zip.field_gen_sale__product_by
+msgid "Product By"
+msgstr "Produit par"
+
+#. module: bi_import_img_from_zip
+#: model:ir.model.fields,field_description:bi_import_img_from_zip.field_gen_sale__product_model
+msgid "Product Model"
+msgstr "modèle du produit"
+
+#. module: bi_import_img_from_zip
+#: model:ir.model.fields.selection,name:bi_import_img_from_zip.selection__gen_sale__product_model__product_template
+msgid "Product Template"
+msgstr "Modèle de produit"
+
+#. module: bi_import_img_from_zip
+#: model:ir.model.fields.selection,name:bi_import_img_from_zip.selection__gen_sale__product_model__product_variants
+msgid "Product Variants"
+msgstr "Variantes de produits"
+
+#. module: bi_import_img_from_zip
+#: model:ir.model.fields,field_description:bi_import_img_from_zip.field_gen_sale__file
+#: model_terms:ir.ui.view,arch_db:bi_import_img_from_zip.gen_sale_wizard_view
+msgid "Zip File"
+msgstr "Fichier zip"
+
+#. module: bi_import_img_from_zip
+#: model:ir.model,name:bi_import_img_from_zip.model_custom_pop_message
+msgid "custom.pop.message"
+msgstr ""
+
+#. module: bi_import_img_from_zip
+#: model:ir.model,name:bi_import_img_from_zip.model_gen_sale
+msgid "gen.sale"
+msgstr ""
+
+#. module: bi_import_img_from_zip
+#: model_terms:ir.ui.view,arch_db:bi_import_img_from_zip.gen_sale_wizard_view
+msgid "or"
+msgstr "ou alors"

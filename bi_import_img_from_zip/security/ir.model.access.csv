@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_gen_sale,gen.sale,model_gen_sale,,1,1,1,1
+access_custom_pop_message,custom.pop.message,model_custom_pop_message,,1,1,1,1
